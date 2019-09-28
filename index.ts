@@ -13,4 +13,5 @@ export * from './src/type-guards';
 // } from './src/type-guards';
 export { TypedEvent  } from './src/typed-event';
 export { withoutNullable } from './src/without-nullable';
+export { nullIfUndefined } from './src/null-if-undefined';
 export * from './src/helper-types';
