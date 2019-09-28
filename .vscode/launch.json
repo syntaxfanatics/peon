@@ -1,0 +1,32 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    // attach to a running node instance (use in conjuction with node dev script)
+    {
+      // https://github.com/whitecolor/ts-node-dev
+      // https://github.com/Microsoft/vscode-recipes/tree/master/nodemon
+      "type": "node",
+      "request": "attach",
+      "name": "Attach Program",
+      "processId": "${command:PickProcess}",
+      "restart": true,
+      "protocol": "inspector",
+      // https://github.com/Microsoft/vscode-react-native/issues/620
+      "skipFiles": [
+        "${workspaceFolder}/node_modules/**/*.ts",
+        "${workspaceFolder}/node_modules/**/*.js",
+        "<node_internals>/**/*.js",
+      ]
+    },
+    {
+      "type": "node",
+      "request": "attach",
+      "name": "Attach by Process ID",
+      "processId": "${command:PickProcess}",
+      "restart": true,
+    }
+  ]
+}

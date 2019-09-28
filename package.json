@@ -1,28 +1,9 @@
 {
-  "name": "peon",
-  "version": "0.0.2",
-  "description": "Helper library for common functions",
-  "main": "src/index.ts",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/syntaxfanatics/peon.git"
-  },
-  "keywords": [
-    "helpers",
-    "peon",
-    "typescript",
-    "node",
-    "browser"
-  ],
-  "author": "Peter Eldred & Nick Kelly",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/syntaxfanatics/peon/issues"
-  },
-  "homepage": "https://github.com/syntaxfanatics/peon#readme",
+  "name": "@syntaxfanatics/peon",
+  "version": "0.0.1",
+  "description": "Helper library for common JavaScript and TypeScript functions",
+  "main": "index.ts",
+  "dependencies": {},
   "devDependencies": {
     "@types/events": "^3.0.0",
     "@types/jest": "^24.0.18",
@@ -36,5 +17,27 @@
     "ts-jest": "^24.1.0",
     "ts-node-dev": "^1.0.0-pre.43",
     "typescript": "^3.6.3"
-  }
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/syntaxfanatics/peon.git"
+  },
+  "keywords": [
+    "javascript",
+    "typescript",
+    "peon",
+    "peonjs",
+    "node",
+    "browser",
+    "helpers"
+  ],
+  "author": "Peter Eldred & Nick Kelly",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/syntaxfanatics/peon/issues"
+  },
+  "homepage": "https://github.com/syntaxfanatics/peon#readme"
 }
