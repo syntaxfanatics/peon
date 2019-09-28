@@ -1,5 +1,5 @@
-export { randomElementOf } from './src/random-element-of';
-export { randomInt } from './src/random-int';
+export * from './src/random-element-of';
+export * from './src/random-int';
 export * from './src/type-guards';
 // export {
 //   hasArrayProperty,
@@ -11,7 +11,7 @@ export * from './src/type-guards';
 //   isNumber,
 //   isString
 // } from './src/type-guards';
-export { TypedEvent  } from './src/typed-event';
-export { withoutNullable } from './src/without-nullable';
-export { nullIfUndefined } from './src/null-if-undefined';
+export * from './src/typed-event';
+export * from './src/without-nullable';
+export * from './src/null-if-undefined';
 export * from './src/helper-types';
