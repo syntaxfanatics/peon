@@ -1,0 +1,40 @@
+{
+  "name": "peon",
+  "version": "0.0.2",
+  "description": "Helper library for common functions",
+  "main": "src/index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/syntaxfanatics/peon.git"
+  },
+  "keywords": [
+    "helpers",
+    "peon",
+    "typescript",
+    "node",
+    "browser"
+  ],
+  "author": "Peter Eldred & Nick Kelly",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/syntaxfanatics/peon/issues"
+  },
+  "homepage": "https://github.com/syntaxfanatics/peon#readme",
+  "devDependencies": {
+    "@types/events": "^3.0.0",
+    "@types/jest": "^24.0.18",
+    "@typescript-eslint/eslint-plugin": "^2.3.1",
+    "@typescript-eslint/parser": "^2.3.1",
+    "eslint": "^6.4.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jest": "^22.17.0",
+    "eslint-plugin-node": "^10.0.0",
+    "jest": "^24.9.0",
+    "ts-jest": "^24.1.0",
+    "ts-node-dev": "^1.0.0-pre.43",
+    "typescript": "^3.6.3"
+  }
+}
