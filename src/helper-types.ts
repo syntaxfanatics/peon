@@ -179,3 +179,10 @@ type KeysWhere<T, R> = { [K in keyof T]: T[K] extends R ? K : never }[keyof T];
  * @see https://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-8.html
  */
 type PropertiesWhere<T, R> = Pick<T, KeysWhere<T, R>>;
+
+// stolen from protobufjs :)
+
+/** Constructor type. */
+export interface Constructor<T> extends Function {
+  new(...params: any[]): T; prototype: T;
+}
