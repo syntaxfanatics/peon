@@ -148,7 +148,7 @@ export type AStringOrNumberKeyOf<T> = Extract<keyof T, string | number>;
  *
  * @see https://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-8.html
  */
-type KeysExceptWhere<T, R> = { [K in keyof T]: T[K] extends R ? never : K }[keyof T];
+export type KeysExceptWhere<T, R> = { [K in keyof T]: T[K] extends R ? never : K }[keyof T];
 
 /**
  * @description
@@ -158,7 +158,7 @@ type KeysExceptWhere<T, R> = { [K in keyof T]: T[K] extends R ? never : K }[keyo
  *
  * @see https://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-8.html
  */
-type PropertiesExceptWhere<T, R> = Pick<T, KeysExceptWhere<T, R>>;
+export type PropertiesExceptWhere<T, R> = Pick<T, KeysExceptWhere<T, R>>;
 
 /**
  * @description
@@ -168,7 +168,7 @@ type PropertiesExceptWhere<T, R> = Pick<T, KeysExceptWhere<T, R>>;
  *
  * @see https://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-8.html
  */
-type KeysWhere<T, R> = { [K in keyof T]: T[K] extends R ? K : never }[keyof T];
+export type KeysWhere<T, R> = { [K in keyof T]: T[K] extends R ? K : never }[keyof T];
 
 /**
  * @description
@@ -178,7 +178,7 @@ type KeysWhere<T, R> = { [K in keyof T]: T[K] extends R ? K : never }[keyof T];
  *
  * @see https://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-8.html
  */
-type PropertiesWhere<T, R> = Pick<T, KeysWhere<T, R>>;
+export type PropertiesWhere<T, R> = Pick<T, KeysWhere<T, R>>;
 
 // stolen from protobufjs :)
 
