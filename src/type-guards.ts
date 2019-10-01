@@ -96,3 +96,25 @@ export const isString = (input: unknown): input is string => typeof input === 's
  * @param input
  */
 export const isNumber = (input: unknown): input is number => typeof input === 'number';
+
+/**
+ * Stolen from apollo-tools (I like their way of checking :))
+ *
+ * @param value
+ */
+export function isNotNullOrUndefined<T>(
+  value: T | null | undefined
+): value is T {
+  return value !== null && typeof value !== "undefined";
+}
+
+
+/**
+ * @desciption
+ * Is the entries value not null or undefined?
+ * 
+ * @param entry 
+ */
+export function entryNotNullOrUndefined<T, V>(entry: [T, V]): entry is [T, NonNullable<V>] {
+  return isNotNullOrUndefined(entry[1]);
+}
