@@ -8,6 +8,30 @@ export type OnHandler<T> = { type: 0; func: Listener<T> }
 export type OnceHandler<T> = { type: 1; func: Listener<T> };
 export type Handler<T> = OnHandler<T> | OnceHandler<T>;
 
+/**
+ * @description
+ * Is the handler to be fired every time?
+ *
+ * @param handler
+ */
+function isOn<T>(handler: Handler<T>): handler is OnHandler<T> {
+  return handler.type === 0;
+}
+
+/**
+ * @description
+ * Is the handler to be fired only once?
+ *
+ * @param handler
+ */
+function isOnce<T>(handler: Handler<T>): handler is OnceHandler<T> {
+  return !isOn(handler);
+}
+
+/**
+ * @description
+ * Typed, custom event emitter
+ */
 export class TypedEvent<T> {
   public handlers: Handler<T>[] = [];
 
@@ -60,6 +84,17 @@ export class TypedEvent<T> {
    */
   pipe = (te: TypedEvent<T>): Disposable => {
     return this.on((e) => te.emit(e));
+  }
+
+  /**
+   * @description
+   * Push an array of handlers onto the handler stack
+   */
+  bindHandlers = (handlers: Handler<T>[]) => {
+    return handlers
+      .map(handler => isOnce(handler)
+        ? this.once(handler.func)
+        : this.on(handler.func));
   }
 
   /**
