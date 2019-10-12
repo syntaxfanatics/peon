@@ -29,7 +29,7 @@
     "url": "git+https://github.com/syntaxfanatics/peon.git"
   },
   "files": [
-    "dist"
+    "*"
   ],
   "keywords": [
     "javascript",

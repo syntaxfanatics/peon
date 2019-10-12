@@ -186,3 +186,9 @@ export type PropertiesWhere<T, R> = Pick<T, KeysWhere<T, R>>;
 export interface Constructor<T> extends Function {
   new(...params: any[]): T; prototype: T;
 }
+
+/**
+ * @description
+ * Infer the ineer type of a promise
+ */
+export type ThenArg<T> = T extends Promise<infer U> ? U : T;

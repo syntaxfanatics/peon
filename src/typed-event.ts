@@ -4,12 +4,12 @@
 interface Listener<T> { (event: T): any }
 interface Disposable { dispose: Function }
 
-type OnHandler<T> = { type: 0; func: Listener<T> }
-type OnceHandler<T> = { type: 1; func: Listener<T> };
-type Handler<T> = OnHandler<T> | OnceHandler<T>;
+export type OnHandler<T> = { type: 0; func: Listener<T> }
+export type OnceHandler<T> = { type: 1; func: Listener<T> };
+export type Handler<T> = OnHandler<T> | OnceHandler<T>;
 
 export class TypedEvent<T> {
-  private handlers: Handler<T>[] = [];
+  public handlers: Handler<T>[] = [];
 
   /**
    * @description
