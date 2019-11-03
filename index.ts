@@ -8,4 +8,5 @@ export * from './src/undefined-if-null';
 export * from './src/helper-types';
 export * from './src/memoise';
 export * from './src/onceify';
+export * from './src/voidify';
 export * from './src/uuidv4';
