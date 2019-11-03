@@ -10,5 +10,5 @@ Authors:
 ## Publishing
 
 ```bash
-npm publish --access=public
+yarn publish
 ```

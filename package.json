@@ -1,6 +1,6 @@
 {
   "name": "@syntaxfanatics/peon",
-  "version": "0.0.16",
+  "version": "0.0.17",
   "description": "Helper library for common JavaScript and TypeScript functions",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -21,8 +21,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "prepublish:build": "rm -rf dist && yarn install && tsc",
-    "prepublish:run": "npm publish --access=public"
+    "prepublish:build": "rm -rf dist && rm -rf node_modules && yarn install --production=true && tsc"
   },
   "repository": {
     "type": "git",
