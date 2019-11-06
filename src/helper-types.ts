@@ -192,3 +192,10 @@ export interface Constructor<T> extends Function {
  * Infer the ineer type of a promise
  */
 export type ThenArg<T> = T extends Promise<infer U> ? U : T;
+
+
+/**
+ * @description
+ * Super type of any function
+ */
+export type AnyFunc = (...args: any[]) => any;

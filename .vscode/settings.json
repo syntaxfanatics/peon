@@ -21,6 +21,10 @@
   },
   // "typescript.tsdk": "node_modules/typescript/lib",
   "cSpell.words": [
-    "esnext"
+    "esnext",
+    "memoise",
+    "onceify",
+    "uuidv",
+    "voidify"
   ],
 }
