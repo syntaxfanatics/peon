@@ -16,6 +16,7 @@ export interface PickArray {
 
 
 /**
+ * @description
  * Select keys to pick from an object
  * Return them in an array, in the order they were picked in
  * 
