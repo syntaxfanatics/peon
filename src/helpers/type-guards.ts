@@ -105,15 +105,15 @@ export const isNumber = (input: unknown): input is number => typeof input === 'n
 export function isNotNullOrUndefined<T>(
   value: T | null | undefined
 ): value is T {
-  return value !== null && typeof value !== "undefined";
+  return value !== null && typeof value !== 'undefined';
 }
 
 
 /**
  * @desciption
  * Is the entries value not null or undefined?
- * 
- * @param entry 
+ *
+ * @param entry
  */
 export function entryNotNullOrUndefined<T, V>(entry: [T, V]): entry is [T, NonNullable<V>] {
   return isNotNullOrUndefined(entry[1]);

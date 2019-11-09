@@ -1,4 +1,4 @@
-import { AnyFunc } from "./helper-types";
+import { AnyFunc } from './helper-types';
 
 /**
  * Only allow the function to be called once

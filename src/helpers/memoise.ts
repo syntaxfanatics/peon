@@ -1,4 +1,4 @@
-import { AnyFunc } from "./helper-types";
+import { AnyFunc } from './helper-types';
 
 type Cache<I, V> = { index: I; result: V  }[]
 type FnCache<F extends AnyFunc> = Cache<Parameters<F>, ReturnType<F>>;
