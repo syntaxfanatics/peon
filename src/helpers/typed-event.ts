@@ -1,4 +1,4 @@
-import { AnyFunc } from "./helper-types";
+import { AnyFunc } from './helper-types';
 
 // @see https://basarat.gitbooks.io/typescript/docs/tips/typed-event.html
 
@@ -45,11 +45,11 @@ class TypedEventDestroyedAccessError extends Error {}
  */
 export class TypedEvent<T> {
   public handlers: Handler<T>[] = [];
-  private _isDestroyed: boolean = false;
+  private _isDestroyed = false;
 
   public isDestroyed = () => this._isDestroyed;
 
-  
+
   /**
    * Throw error if the wrapped function is invoked when this class is already destroyed
    *
@@ -57,10 +57,14 @@ export class TypedEvent<T> {
    */
   private onlyIfNotDestroyed = <F extends AnyFunc>(fn: F) => {
     const isDestroyedFn = this.isDestroyed;
-    return function applyFunctionIfNotDestroyed(...args: Parameters<F>): ReturnType<F> {
+    return function applyIfNotDestroyed(...args: Parameters<F>): ReturnType<F> {
       if (isDestroyedFn()) throw new TypedEventDestroyedAccessError();
       return fn(...args);
     }
+    // return function applyIfNotDestroyed(this: TypedEvent<T>, ...args: Parameters<F>): ReturnType<F> {
+    //   if (this.isDestroyed()) throw new TypedEventDestroyedAccessError();
+    //   return fn(...args);
+    // }
   }
 
 
