@@ -1,12 +1,14 @@
 import {$TS_FIX_ME, AnElementOf} from './helper-types';
 
+type StrNum = string | number;
+
 /**
  * Clone an object and omit the desired properties
  *
  * @param leaveOut
  */
-export function omit<T extends (PropertyKey)[]>(...leaveOut: T) {
-  return function doOmit<R extends Record<PropertyKey ,any>>(
+export function omit<T extends (StrNum)[]>(...leaveOut: T) {
+  return function doOmit<R extends Record<StrNum ,any>>(
     record: R
   ): Omit<R, AnElementOf<T>> {
     const result = Object
