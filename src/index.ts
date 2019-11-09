@@ -12,3 +12,4 @@ export * from './helpers/voidify';
 export * from './helpers/uuidv4';
 export * from './helpers/omit';
 export * from './helpers/pick';
+export * from './helpers/pick-array';

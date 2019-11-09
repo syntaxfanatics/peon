@@ -1,6 +1,6 @@
 {
   "name": "@syntaxfanatics/peon",
-  "version": "0.0.23",
+  "version": "0.0.25",
   "description": "Helper library for common JavaScript and TypeScript functions",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

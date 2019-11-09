@@ -1,14 +1,12 @@
 import {$TS_FIX_ME, AnElementOf} from './helper-types';
 
-type StrNum = string | number;
-
 /**
  * Clone an object and pick the desired properties
  *
  * @param include
  */
-export function pick<T extends (StrNum)[]>(...include: T) {
-  return function doPick<R extends Record<StrNum ,any>>(
+export function pick<T extends (string | number)[]>(...include: T) {
+  return function doPick<R extends Record<string | number ,any>>(
     record: R
   ): Pick<R, AnElementOf<T>> {
     const result = include
