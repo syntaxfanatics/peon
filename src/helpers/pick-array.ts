@@ -1,4 +1,4 @@
-import { $TS_FIX_ME } from "./helper-types";
+import { $TS_FIX_ME } from './helper-types';
 
 // TODO: find a better way to map the array T into the array R[T]
 export interface PickArray {
@@ -19,8 +19,8 @@ export interface PickArray {
  * @description
  * Select keys to pick from an object
  * Return them in an array, in the order they were picked in
- * 
- * @param extract 
+ *
+ * @param extract
  */
 export const pickArray: PickArray = (...extract: $TS_FIX_ME<any>) => {
   return function doPickArray(record: $TS_FIX_ME<any>) {
