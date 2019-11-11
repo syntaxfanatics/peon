@@ -1,0 +1,78 @@
+# Javascript Node CircleCI 2.0 configuration file
+#
+# Check {{ '/2.0/language-javascript/' | docs_url }} for more details
+#
+version: 2
+
+defaults: &defaults
+  working_directory: ~/repo
+  docker:
+    - image: circleci/node:13.1.0
+
+jobs:
+  test:
+    <<: *defaults  
+    steps:
+      - checkout
+
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "package.json" }}
+          # fallback to using the latest cache if no exact match is found
+          - v1-dependencies-
+
+      - run: npm install
+      - run:
+          name: Run tests
+          command: npm test
+
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+
+      - persist_to_workspace:
+          root: ~/repo
+          paths: .
+  deploy:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: ~/repo
+      - run:
+          name: Authenticate with registry
+          command: echo "$NPM_REGISTRY/:_authToken=$NPM_TOKEN" > ~/repo/.npmrc
+      - run:
+          name: Install TypeScript globally
+          command: sudo npm i -g typescript
+      - run:
+          name: "Build"
+          command: npm run prepublish:build
+      - run:
+          name: Publish package
+          command: npm publish
+
+# @see https://circleci.com/blog/Adding-container-security-scanning-anchore/
+
+# # Git Tag Job Execution - Deploy on tagged commit
+# As part of our continuous delivery pipeline, we want to make sure the deploy job runs /only/ when a commit has been tagged with a version number and pushed.
+
+# The workspace configuration above will run the test job on all branches and all tags and run the deploy job only when a commit is tagged with a version number and pushed.
+
+# The tags section is using a regex to match tags that begin with a v, for example, v0.1.0.
+workflows:
+  version: 2
+  test-deploy:
+    jobs:
+      - test:
+          filters:
+            tags:
+              only: /^v.*/
+      - deploy:
+          requires:
+            - test
+          filters:
+            tags:
+              only: /^v.*/
+            branches:
+              ignore: /.*/
