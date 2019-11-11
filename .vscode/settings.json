@@ -27,4 +27,5 @@
     "uuidv",
     "voidify"
   ],
+  "typescript.tsdk": "node_modules/typescript/lib",
 }

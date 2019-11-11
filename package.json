@@ -1,27 +1,30 @@
 {
   "name": "@syntaxfanatics/peon",
-  "version": "0.0.25",
+  "version": "0.0.27",
   "description": "Helper library for common JavaScript and TypeScript functions",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "scripts": {
+    "upgrade-interactive": "npm-check --update",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "prepublish:build": "rm -rf dist && rm -rf node_modules && npm install --production && tsc"
+  },
   "dependencies": {},
   "devDependencies": {
     "@types/events": "^3.0.0",
     "@types/jest": "^24.0.22",
     "@typescript-eslint/eslint-plugin": "^2.6.1",
     "@typescript-eslint/parser": "^2.6.1",
-    "eslint": "^6.6.0",
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-jest": "^23.0.3",
     "eslint-plugin-node": "^10.0.0",
+    "eslint": "^6.6.0",
     "jest": "^24.9.0",
+    "npm-check": "^5.9.0",
     "ts-jest": "^24.1.0",
     "ts-node-dev": "^1.0.0-pre.44",
     "typescript": "^3.7.2"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "prepublish:build": "rm -rf dist && rm -rf node_modules && yarn install --production=true && tsc"
   },
   "repository": {
     "type": "git",
