@@ -41,7 +41,7 @@ jobs:
           at: ~/repo
       - run:
           name: Authenticate with registry
-          command: echo "$NPM_REGISTRY/:_authToken=$NPM_TOKEN" > ~/repo/.npmrc
+          command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/repo/.npmrc
       - run:
           name: Install TypeScript globally
           command: sudo npm i -g typescript
@@ -52,27 +52,23 @@ jobs:
           name: Publish package
           command: npm publish
 
-# @see https://circleci.com/blog/Adding-container-security-scanning-anchore/
+# @see https://circleci.com/blog/publishing-npm-packages-using-circleci-2-0/
 
-# # Git Tag Job Execution - Deploy on tagged commit
-# As part of our continuous delivery pipeline, we want to make sure the deploy job runs /only/ when a commit has been tagged with a version number and pushed.
+# @note:
+#   Only auto deploying master branch
+#   not using version tags for deployment since CircleCI doesn't
+#   support & filtering (tags AND master) (only supports OR filtering)
 
-# The workspace configuration above will run the test job on all branches and all tags and run the deploy job only when a commit is tagged with a version number and pushed.
-
-# The tags section is using a regex to match tags that begin with a v, for example, v0.1.0.
+# https://circleci.com/blog/publishing-npm-packages-using-circleci-2-0/
 workflows:
   version: 2
   test-deploy:
     jobs:
       - test:
-          filters:
-            tags:
-              only: /^v.*/
       - deploy:
           requires:
             - test
           filters:
-            tags:
-              only: /^v.*/
             branches:
-              ignore: /.*/
+              only:
+                - master
