@@ -1,4 +1,4 @@
-import { $TS_FIX_ME } from './helper-types';
+import { $TS_FIX_ME, AnyFunc } from './helper-types';
 
 
 declare const setTimeout: (a: Function, time: number) => any;
@@ -12,9 +12,16 @@ declare const console: { error(...args: any[]): void }
  */
 export function retryEvery(options: { millisBetween: number; maxAttempts: number }) {
   const { millisBetween, maxAttempts } = options;
-  return function takeAsyncFn<F extends (...args: any[]) => Promise<any>>(tryMe: F) {
+
+  return function takeAsyncFn<F extends AnyFunc>(tryMe: F) {
     let attempts = 0;
-    return async function trigger<A extends Parameters<F>>(...args: A): Promise<F extends (...args: A) => infer R ? R : never> {
+
+    return async function trigger<A extends Parameters<F>>(
+      ...args: A
+    ): Promise<F extends (...args: A) => Promise<infer PR>
+        ? PR
+        : F extends(...args: A) => infer R
+          ? R : never> {
       // eslint-disable-next-line no-constant-condition
       while(true) {
         try { return await tryMe(...args)  }
