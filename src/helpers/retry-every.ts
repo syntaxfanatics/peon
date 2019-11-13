@@ -14,7 +14,7 @@ export function retryEvery(options: { millisBetween: number; maxAttempts: number
   const { millisBetween, maxAttempts } = options;
   return function takeAsyncFn<F extends (...args: any[]) => Promise<any>>(tryMe: F) {
     let attempts = 0;
-    return async function trigger(...args: Parameters<F>) {
+    return async function trigger<A extends Parameters<F>>(...args: A): Promise<F extends (...args: A) => infer R ? R : never> {
       // eslint-disable-next-line no-constant-condition
       while(true) {
         try { return await tryMe(...args)  }
