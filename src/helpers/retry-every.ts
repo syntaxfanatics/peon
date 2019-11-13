@@ -1,10 +1,10 @@
-import { $TS_FIX_ME } from "../../dist";
+import { $TS_FIX_ME } from './helper-types';
 
 
 /**
  * Retry an async function if it fails
- * 
- * @param options 
+ *
+ * @param options
  */
 export function retryEvery(options: { millisBetween: number; maxAttempts: number }) {
   const { millisBetween, maxAttempts } = options;

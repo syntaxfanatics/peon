@@ -13,3 +13,4 @@ export * from './helpers/uuidv4';
 export * from './helpers/omit';
 export * from './helpers/pick';
 export * from './helpers/pick-array';
+export * from './helpers/retry-every';
