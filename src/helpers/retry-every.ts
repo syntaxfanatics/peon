@@ -1,6 +1,10 @@
 import { $TS_FIX_ME } from './helper-types';
 
 
+declare const setTimeout: (a: Function, time: number) => any;
+declare const console: { error(...args: any[]): void }
+
+
 /**
  * Retry an async function if it fails
  *
