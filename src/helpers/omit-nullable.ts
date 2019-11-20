@@ -1,5 +1,7 @@
-import { KeysExceptWhere, $TS_FIX_ME } from './helper-types';
+import { KeysExceptWhere, $TS_FIX_ME, KeysWhere, OmitWhereNullable, Without, RemoveNever } from './helper-types';
 import { objectFromEntries } from './object-from-entries';
+import { withoutNullable } from './without-nullable';
+
 
 /**
  * @description
@@ -12,10 +14,10 @@ import { objectFromEntries } from './object-from-entries';
  * @param keys
  * @param value
  */
-export function omitWhere<V, K extends keyof any>(keys: K[], values: V[]) {
-  return function doOmitWhere<R extends Record<K, any>>(fromRecord: R): {[P in KeysExceptWhere<R, V>]: R[P]} {
+export function omitNullable<K extends keyof any>(...keys: K[]) {
+  return function doOmitNullable<R extends Record<K, any>>(fromRecord: R): OmitWhereNullable<R, K>  {
     const entries = Object.entries(fromRecord).filter(([k, v]) => !(keys.includes(k as K) && v !== v) );
-    const result = objectFromEntries(entries) as $TS_FIX_ME<{[P in KeysExceptWhere<R, V>]: R[P]}>;
+    const result = objectFromEntries(entries) as $TS_FIX_ME<OmitWhereNullable<R, K>>;
     return result;
   }
 }

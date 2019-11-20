@@ -152,7 +152,7 @@ export type KeysExceptWhere<T, R> = { [K in keyof T]: T[K] extends R ? never : K
 
 /**
  * @description
- * Properties of the object, excet those of type R
+ * Properties of the object, except those of type R
  *
  * Extrapolated from TS documentation
  *
@@ -180,6 +180,66 @@ export type KeysWhere<T, R> = { [K in keyof T]: T[K] extends R ? K : never }[key
  */
 export type PropertiesWhere<T, R> = Pick<T, KeysWhere<T, R>>;
 
+/**
+ * @description
+ * Filter never types off an object
+ */
+export type RemoveNever<T> = Pick<T, { [K in keyof T]: T[K] extends never ? never : K }[keyof T]>
+
+/**
+ * @description
+ * T without its properties that are assignable to V
+ */
+export type Without<T, V> = RemoveNever<{ [K in keyof T]: T[K] extends V ? never : T[K] }>;
+
+/**
+ * @description
+ * T without its properties that are assignable to null
+ */
+export type WithoutNull<T> = RemoveNever<{ [K in keyof T]: T[K] extends null ? never : T[K] }>;
+
+/**
+ * @description
+ * T without its properties that are assignable to undefined or null
+ */
+export type WithoutUndefined<T> = RemoveNever<{ [K in keyof T]: T[K] extends undefined ? never : T[K] }>;
+
+/**
+ * @description
+ * T without its properties that are assignable to undefined or null
+ */
+export type WithoutNullable<T> = RemoveNever<{ [K in keyof T]: NonNullable<T[K]> }>;
+
+/**
+ * @description
+ * T without its keys K where T[K] is assignable to V
+ *
+ * @note:
+ *  For some reason V ? never : R[N] is not equivalent
+ *  to NonNullable<R[N]> when V is null | undefined?
+ *    ~ 2019-11-21
+ */
+export type OmitWhere<R, K extends keyof R, V> = Omit<R, K> & RemoveNever<{ [N in keyof Pick<R, K>]: R[N] extends V ? never : R[N] }>
+
+/**
+ * @description
+ * T without its keys K where T[K] is assignable to undefined
+ */
+export type OmitWhereUndefined<R, K extends keyof R> = Omit<R, K> & RemoveNever<{ [N in keyof Pick<R, K>]: R[N] extends undefined ? never : R[N] }>
+
+/**
+ * @description
+ * T without its keys K where T[K] is assignable to null
+ */
+export type OmitWhereNull<R, K extends keyof R> = Omit<R, K> & RemoveNever<{ [N in keyof Pick<R, K>]: R[N] extends null ? never : R[N] }>
+
+/**
+ * @description
+ * T without its keys K where T[K] is assignable to null or undefined
+ */
+export type OmitWhereNullable<R, K extends keyof R> = Omit<R, K> & RemoveNever<{ [N in keyof Pick<R, K>]: NonNullable<R[N]> }>
+
+
 // stolen from protobufjs :)
 
 /** Constructor type. */
@@ -189,7 +249,7 @@ export interface Constructor<T> extends Function {
 
 /**
  * @description
- * Infer the ineer type of a promise
+ * Infer the inner type of a promise
  */
 export type ThenArg<T> = T extends Promise<infer U> ? U : T;
 
