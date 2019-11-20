@@ -1,6 +1,7 @@
 import { AnyFunc } from './helper-types';
 
 /**
+ * @description
  * Void the return of a function
  *
  * @param fn

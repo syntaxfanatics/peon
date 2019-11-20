@@ -112,7 +112,7 @@ export function isNotNullOrUndefined<T>(
 
 
 /**
- * @desciption
+ * @description
  * Is the entries value not null or undefined?
  *
  * @param entry

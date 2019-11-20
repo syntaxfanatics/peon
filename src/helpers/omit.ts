@@ -1,6 +1,7 @@
 import {$TS_FIX_ME, AnElementOf} from './helper-types';
 
 /**
+ * @description
  * Clone an object and omit the desired properties
  *
  * Place put the properties to omit as the first argument

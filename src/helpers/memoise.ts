@@ -37,6 +37,7 @@ class FnMemoMap<F extends AnyFunc> extends Function {
 
 
 /**
+ * @description
  * Memoise the result of a function
  *
  * @param fn

@@ -1,4 +1,5 @@
 import { $TS_FIX_ME } from './helper-types';
+import { objectFromEntries } from './object-from-entries';
 
 /**
  * @description
@@ -7,7 +8,6 @@ import { $TS_FIX_ME } from './helper-types';
  * @param inp
  */
 export function withoutNullable<T extends {}>(inp: T): NonNullable<T> {
-  const acc: $TS_FIX_ME<any> = {};
-  Object.entries(inp).forEach(([k, v]) => ((v !== null) && (v !== undefined) && (acc[k] = v)));
-  return acc as $TS_FIX_ME<NonNullable<T>>;
+  const result = objectFromEntries(Object.entries(inp).filter(([k, v]) => ((v !== null) && (v !== undefined))));
+  return result as $TS_FIX_ME<NonNullable<T>>;
 }

@@ -1,6 +1,7 @@
 import { AnyFunc } from './helper-types';
 
 /**
+ * @description
  * Only allow the function to be called once
  *
  * @param fn
