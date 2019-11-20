@@ -3,6 +3,10 @@ import {$TS_FIX_ME, AnElementOf} from './helper-types';
 /**
  * Clone an object and omit the desired properties
  *
+ * Place put the properties to omit as the first argument
+ *
+ * Composes well with functions that take unary arguments
+ *
  * @param leaveOut
  */
 export function omit<T extends (string | number)[]>(...leaveOut: T) {

@@ -1,4 +1,4 @@
-import { AnyFunc } from "./helper-types";
+import { AnyFunc } from './helper-types';
 
 /**
  * Void the return of a function

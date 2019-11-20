@@ -1,7 +1,7 @@
 import { $TS_FIX_ME } from './helper-types';
 
 // TODO: find a better way to map the array T into the array R[T]
-export interface PickArray {
+export interface PickIntoArray {
   (): <R extends {}>(record: R) => [];
   <T1 extends string | number>(...extract: [T1]): <R extends Record<T1 , any>>(record: R) => [R[T1]];
   <T1 extends string | number, T2 extends string | number>(...extract: [T1, T2]): <R extends Record<T1 | T2 , any>>(record: R) => [R[T1], R[T2]];
@@ -22,7 +22,7 @@ export interface PickArray {
  *
  * @param extract
  */
-export const pickArray: PickArray = (...extract: $TS_FIX_ME<any>) => {
+export const pickIntoArray: PickIntoArray = (...extract: $TS_FIX_ME<any>) => {
   return function doPickArray(record: $TS_FIX_ME<any>) {
     const result = extract.map((ex: $TS_FIX_ME<any>) => record[ex]);
     return result;

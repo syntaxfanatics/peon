@@ -1,3 +1,5 @@
+import { AnyFunc } from './helper-types';
+
 type $TS_FIX_ME<T> = T;
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
@@ -79,7 +81,7 @@ export const hasObjectProperty = <T extends Record<string, any>, P extends Prope
 export const hasFunctionProperty = <T extends Record<string, any>, P extends PropertyKey>(
   obj: T,
   property: P,
-): obj is T & { [index in P]: Record<string, any> } => hasProperty(obj, property) && typeof obj[property] === 'function';
+): obj is T & { [index in P]: AnyFunc } => hasProperty(obj, property) && typeof obj[property] === 'function';
 
 /**
  * @description

@@ -3,6 +3,10 @@ import {$TS_FIX_ME, AnElementOf} from './helper-types';
 /**
  * Clone an object and pick the desired properties
  *
+ * Place put the properties to pick as the first argument
+ *
+ * Composes well with functions that take unary arguments
+ *
  * @param include
  */
 export function pick<T extends (string | number)[]>(...include: T) {
