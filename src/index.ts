@@ -19,3 +19,6 @@ export * from './helpers/undefined-if-null';
 export * from './helpers/uuidv4';
 export * from './helpers/voidify';
 export * from './helpers/without-nullable';
+export * from './helpers/flat-map';
+export * from './helpers/flatten';
+export * from './helpers/map-object';

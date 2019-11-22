@@ -1,6 +1,7 @@
-import { KeysExceptWhere, $TS_FIX_ME, KeysWhere, OmitWhereNullable, Without, RemoveNever } from './helper-types';
+import { KeysExceptWhere, $TS_FIX_ME, KeysWhere, OmitWhereNullable, Without, RemoveNever, OmitEntries } from './helper-types';
 import { objectFromEntries } from './object-from-entries';
 import { withoutNullable } from './without-nullable';
+import { objectEntries } from './object-entries';
 
 
 /**
@@ -9,15 +10,15 @@ import { withoutNullable } from './without-nullable';
  *
  * Place put the properties and values to omit as the first argument
  *
- * Composes well with functions that take unary arguments
+ * Composes with unary functions
  *
- * @param keys
+ * @param checkKeys
  * @param value
  */
-export function omitNullable<K extends keyof any>(...keys: K[]) {
+export function omitNullable<K extends keyof any>(...checkKeys: K[]) {
   return function doOmitNullable<R extends Record<K, any>>(fromRecord: R): OmitWhereNullable<R, K>  {
-    const entries = Object.entries(fromRecord).filter(([k, v]) => !(keys.includes(k as K) && v !== v) );
-    const result = objectFromEntries(entries) as $TS_FIX_ME<OmitWhereNullable<R, K>>;
-    return result;
+    const entries = objectEntries(fromRecord).filter(([k, v]) => !(checkKeys.includes(k as $TS_FIX_ME<K>) && (v === null || v === undefined)));
+    const result = objectFromEntries(entries);
+    return result as $TS_FIX_ME<any>;
   }
 }

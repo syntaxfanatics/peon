@@ -1,5 +1,6 @@
-import { $TS_FIX_ME, OmitWhereNullable } from './helper-types';
+import { $TS_FIX_ME, OmitWhereNullable, OmitEntries } from './helper-types';
 import { objectFromEntries } from './object-from-entries';
+import { objectEntries } from './object-entries';
 
 /**
  * @description
@@ -9,8 +10,8 @@ import { objectFromEntries } from './object-from-entries';
  */
 export function omitNullableFrom<R>(fromRecord: R) {
   return function doOmitNullableFrom<K extends keyof R>(...keys: K[]): OmitWhereNullable<R, K> {
-    const entries = Object.entries(fromRecord).filter(([k, v]) => !(keys.includes(k as K) && v !== v) );
-    const result = objectFromEntries(entries) as $TS_FIX_ME<OmitWhereNullable<R, K>>;
-    return result;
+    const entries = objectEntries(fromRecord).filter(([k, v]) => !(keys.includes(k as K) && v !== v));
+    const result = objectFromEntries(entries);
+    return result as $TS_FIX_ME<any>;
   }
 }

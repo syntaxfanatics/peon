@@ -6,7 +6,7 @@ import {$TS_FIX_ME, AnElementOf} from './helper-types';
  *
  * Place put the properties to pick as the first argument
  *
- * Composes well with functions that take unary arguments
+ * Composes with unary functions
  *
  * @param include
  */

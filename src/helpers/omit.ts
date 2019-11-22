@@ -1,4 +1,6 @@
-import {$TS_FIX_ME, AnElementOf} from './helper-types';
+import {$TS_FIX_ME, AnElementOf, OmitEntries} from './helper-types';
+import { objectEntries } from './object-entries';
+import { objectFromEntries } from './object-from-entries';
 
 /**
  * @description
@@ -6,22 +8,14 @@ import {$TS_FIX_ME, AnElementOf} from './helper-types';
  *
  * Place put the properties to omit as the first argument
  *
- * Composes well with functions that take unary arguments
+ * Composes with unary functions
  *
  * @param leaveOut
  */
-export function omit<T extends (string | number)[]>(...leaveOut: T) {
-  return function doOmit<R extends Record<string | number ,any>>(
-    record: R
-  ): Omit<R, AnElementOf<T>> {
-    const result = Object
-      .entries(record)
-      .reduce((acc, [k, v]) => {
-        const toBeOmitted = leaveOut.indexOf(k) !== -1;
-        if (!toBeOmitted) acc[k] = v;
-        return acc;
-      }, {} as $TS_FIX_ME<any>);
-
-    return result;
+export function omit<T extends PropertyKey[]>(...leaveOut: T) {
+  return function doOmit<R extends Record<PropertyKey, any>>(record: R): Omit<R, AnElementOf<T>> {
+    const entries = objectEntries(record).filter(([k]) => !leaveOut.includes(k)) as $TS_FIX_ME<OmitEntries<R, T>>;
+    const result = objectFromEntries(entries);
+    return result as $TS_FIX_ME<any>;
   }
 }

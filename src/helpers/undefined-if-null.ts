@@ -1,5 +1,6 @@
 import { $TS_FIX_ME } from './helper-types';
 import { objectFromEntries } from './object-from-entries';
+import { objectEntries } from './object-entries';
 
 export const undefinedIfNull = <T>(
   v: T
@@ -41,10 +42,8 @@ export function objectUndefinedIfNull<
 >(
   input: { [P in K]: T[P] }
 ): R {
-  const output = objectFromEntries((Object
-    .entries(input)
-    .map(([k, v]) => [k, v === null ? undefined : v ])
-  )) as $TS_FIX_ME<R>;
-
-  return output;
+  const entries = objectEntries(input);
+  const mappedEntries = entries.map(([k, v]) => [k, v === null ? undefined : v ]);
+  const result = objectFromEntries(mappedEntries as $TS_FIX_ME<any>);
+  return result as $TS_FIX_ME<any>;
 }
