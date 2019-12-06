@@ -15,3 +15,4 @@ export function objectEntries<T extends Record<PropertyKey, any>>(obj: T): [keyo
 
   return result;
 }
+

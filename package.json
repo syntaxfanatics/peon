@@ -1,6 +1,6 @@
 {
   "name": "@syntaxfanatics/peon",
-  "version": "0.0.46",
+  "version": "0.0.47",
   "description": "Helper library for common JavaScript and TypeScript functions",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -14,17 +14,17 @@
   "devDependencies": {
     "@types/events": "^3.0.0",
     "@types/jest": "^24.0.23",
-    "@typescript-eslint/eslint-plugin": "^2.8.0",
-    "@typescript-eslint/parser": "^2.8.0",
-    "eslint": "^6.6.0",
+    "@typescript-eslint/eslint-plugin": "^2.10.0",
+    "@typescript-eslint/parser": "^2.10.0",
+    "eslint": "^6.7.2",
     "eslint-plugin-import": "^2.18.2",
-    "eslint-plugin-jest": "^23.0.4",
+    "eslint-plugin-jest": "^23.1.1",
     "eslint-plugin-node": "^10.0.0",
     "jest": "^24.9.0",
     "npm-check": "^5.9.0",
-    "ts-jest": "^24.1.0",
+    "ts-jest": "^24.2.0",
     "ts-node-dev": "^1.0.0-pre.44",
-    "typescript": "^3.7.2"
+    "typescript": "^3.7.3"
   },
   "repository": {
     "type": "git",

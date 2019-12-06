@@ -22,3 +22,4 @@ export * from './helpers/without-nullable';
 export * from './helpers/flat-map';
 export * from './helpers/flatten';
 export * from './helpers/map-object';
+export * from './data-structures/immutable-set';
