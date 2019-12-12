@@ -271,3 +271,11 @@ export type MakeOptional<T, U extends keyof T> = Omit<T, U> & Partial<Pick<T, U>
  * Entries of an object, omitting the specified keys
  */
 export type OmitEntries<T, K> = [Exclude<keyof T, K>, T[Exclude<keyof T, K>]][];
+
+/**
+ * @description
+ * A function that returns a Promise
+ */
+export interface LazyPromise<A> {
+  (): Promise<A>
+}
