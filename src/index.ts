@@ -23,3 +23,5 @@ export * from './helpers/flat-map';
 export * from './helpers/flatten';
 export * from './helpers/map-object';
 export * from './data-structures/immutable-set';
+export * from './helpers/promise-for-each';
+export * from './helpers/promise-map';
